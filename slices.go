@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func mySlice() {
+func MySlice() {
 
 	var arr [7]int
 	//arr[3] = 6

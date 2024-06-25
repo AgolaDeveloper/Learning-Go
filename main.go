@@ -17,6 +17,27 @@ func advancedArray() {
 	}
 
 	fmt.Printf("OUR ARRAY: \n      %v", ourArray)
+
+	//NOW we gotta SEARCH for an element [128 in this case]
+
+	element := 1
+	count := 0
+	for i := 0; i < len(ourArray); i++ {
+
+		if ourArray[i] == element {
+			fmt.Printf("Element %v Available in Our Array \n It's stored at index %v \n", element, i)
+			count++
+			//elemPresent = true
+		} else if i == len(ourArray)-1 && count == 0 {
+			fmt.Printf("\nElement %v NOT available in Our Array \n \n", element)
+
+		}
+	}
+
+	/*if count == 0 {
+		fmt.Printf("Element %v NOT available in Our Array \n \n", element)
+
+	}*/
 }
 
 func main() {

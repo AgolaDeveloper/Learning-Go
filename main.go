@@ -8,5 +8,6 @@ func main() {
 	fmt.Printf("I'm passionate about Go. Just getting started \n Here's %v", LearningGo)
 
 	//Go-Slices
-	MySlice()
+	//MySlice()
+	advanceArray()
 }

@@ -156,7 +156,7 @@ func sortAscend() {
 
 //FINDING THE LARGEST ELEMENT IN THE ARRAY
 func laGest() {
-	fmt.Println("//FINDING THE LARGEST ELEMENT//")
+	fmt.Println("//FINDING THE LARGEST ELEMENT IN AN ARRAY//")
 
 	//first step to the problem is sorting the array
 	//either in ascending or descending order
@@ -189,6 +189,41 @@ func laGest() {
 	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
+//FINDING THE LARGEST ELEMENT IN THE ARRAY
+func smallestElement() {
+	fmt.Println("//FINDING THE SMALLEST ELEMENT IN AN ARRAY//")
+
+	//first step to the problem is sorting the array
+	//either in ascending or descending order
+
+	//In Descending Order, last element in the array is the smallest...
+	//while first element in the array is the smallest in Ascending Order.
+
+	//sorting in Descending Order, in this case
+	array := [10]int{30, 20, 100, 10, 300, 1000, 25, 6, 1, 35}
+
+	var temp int
+
+	for i := 0; i < len(array)-1; i++ {
+		largest := array[i]
+
+		for j := (i + 1); j < len(array); j++ {
+			if array[j] > largest {
+				largest = array[j]
+
+				temp = array[i]
+				array[i] = largest
+				array[j] = temp
+			}
+		}
+	}
+
+	//Upon Sorting in Descending Order, Largest element is stored at the first index
+	fmt.Printf("\nSmallest Number: \n >> %v\n", array[len(array)-1])
+
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+}
+
 //The Program's ENTRY POINT
 
 func main() {
@@ -206,4 +241,5 @@ func main() {
 	sortDescend()
 	sortAscend()
 	laGest()
+	smallestElement()
 }

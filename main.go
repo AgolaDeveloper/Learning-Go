@@ -101,15 +101,16 @@ func sortDescend() {
 		largest := array[i]
 
 		//comparison begins from the immediate subsequent element of the current [largest] element
-		for j := (i + 1); j < len(array); i++ {
+		for j := (i + 1); j < len(array); j++ {
 
 			if array[j] > largest {
 				largest = array[j]
 
+				temp = array[i]
+				array[i] = largest
+				array[j] = temp
+
 			}
-			temp = array[i]
-			array[i] = largest
-			array[j] = temp
 
 		}
 		//swapping new largest with our initial-largest i

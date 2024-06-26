@@ -106,6 +106,8 @@ func sortDescend() {
 			if array[j] > largest {
 				largest = array[j]
 
+				//swapping new largest value [found in inner loop] with our initial-largest i [of outer loop]
+
 				temp = array[i]
 				array[i] = largest
 				array[j] = temp
@@ -113,12 +115,44 @@ func sortDescend() {
 			}
 
 		}
-		//swapping new largest with our initial-largest i
-
 	}
 
 	fmt.Printf("Assorted Array [Descending]:\n %v\n", array)
 
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+}
+
+//SORTING Array ELEMENTS in Descending Order
+func sortAscend() {
+	array := [10]int{30, 20, 100, 10, 300, 1000, 25, 6, 1, 35}
+
+	fmt.Printf("Array before Sort:\n %v\n", array)
+
+	//create a TEMPORARY variable that will help us with swapping two number upon comparison
+	var temp int
+
+	for i := 0; i < len(array)-1; i++ {
+		//every iteration of our outter loop...
+		//...we set array[i] current element as the smallest
+		//...and compare it against the rest of the subsequent numbers
+
+		smallest := array[i]
+
+		for j := (i + 1); j < len(array); j++ {
+			//comparing all the elemets in inner loop against current smallest of every iteration
+
+			if array[j] < smallest {
+				//then set array[j] as the smallest
+				smallest = array[j]
+
+				temp = array[i]
+				array[i] = smallest
+				array[j] = temp
+			}
+		}
+	}
+
+	fmt.Printf("Assorted Array [Ascending]:\n %v\n", array)
 	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
@@ -137,5 +171,5 @@ func main() {
 	compareElements()
 	swapElements()
 	sortDescend()
-
+	sortAscend()
 }

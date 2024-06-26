@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func advancedArray() {
+func searchArray() {
 	//trying to do a SEARCH OPERATION on our array
 	fmt.Printf("***************************************************\n**************************************************\n\n")
 	fmt.Println("Beginning of our ADVANCED ARRAY SECTION")
@@ -13,6 +13,7 @@ func advancedArray() {
 	//...where the first element is 4
 	ourArray[0] = 2
 	for i := 1; i < len(ourArray); i++ {
+
 		ourArray[i] = ourArray[i-1] * 2
 	}
 
@@ -33,11 +34,37 @@ func advancedArray() {
 
 		}
 	}
+}
 
-	/*if count == 0 {
-		fmt.Printf("Element %v NOT available in Our Array \n \n", element)
+//Practising COMPARING ELEMENTS in an Array
 
-	}*/
+func compareElements() {
+	fmt.Println("//Practising COMPARING ELEMENTS in an Array//")
+	array := [10]int{30, 20, 100, 10, 300, 1000, 25, 6, 1, 35}
+
+	fmt.Printf("\nOur Array before sorting:\n %v\n", array)
+
+	//creating a temporaray variable, TEMP, that'll help us with swapping elements
+	//var temp int
+
+	//now we COMPARE the subsequent elements
+
+	for i := 0; i < len(array)-1; i++ {
+
+		if array[i] < array[i+1] {
+			fmt.Printf("%v is greater than %v\n", array[i+1], array[i])
+			/*temp = array[i]
+			array[i] = array[i+1]
+			array[i+1] = temp*/
+
+		} else {
+			fmt.Printf("%v is lesser than %v\n", array[i+1], array[i])
+
+		}
+	}
+
+	fmt.Printf("\nOur Sorted Array [DESCENDING ORDER]:\n %v\n", array)
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
 func main() {
@@ -49,6 +76,8 @@ func main() {
 
 	//Go-Slices
 	//MySlice()
-	advancedArray()
+	searchArray()
+	compareElements()
+	//sortDescend()
 
 }

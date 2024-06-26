@@ -84,6 +84,45 @@ func swapElements() {
 	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
+//SORTING Array ELEMENTS in Descending Order
+
+func sortDescend() {
+	array := [10]int{30, 20, 100, 10, 300, 1000, 25, 6, 1, 35}
+
+	fmt.Printf("Our Array before Sorting:\n %v\n", array)
+
+	//comparing every element against all elements in the array
+
+	for i := 0; i < len(array)-1; i++ {
+
+		var temp int
+
+		//we first assume current element we're doing comparison against is the largest
+		largest := array[i]
+
+		//comparison begins from the immediate subsequent element of the current [largest] element
+		for j := (i + 1); j < len(array); i++ {
+
+			if array[j] > largest {
+				largest = array[j]
+
+			}
+			temp = array[i]
+			array[i] = largest
+			array[j] = temp
+
+		}
+		//swapping new largest with our initial-largest i
+
+	}
+
+	fmt.Printf("Assorted Array [Descending]:\n %v\n", array)
+
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+}
+
+//The Program's ENTRY POINT
+
 func main() {
 	LearningGo := "My First Commit:"
 
@@ -96,6 +135,6 @@ func main() {
 	searchArray()
 	compareElements()
 	swapElements()
-	//sortDescend()
+	sortDescend()
 
 }

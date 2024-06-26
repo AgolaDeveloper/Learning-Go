@@ -34,6 +34,8 @@ func searchArray() {
 
 		}
 	}
+
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
 //Practising COMPARING ELEMENTS in an Array
@@ -44,18 +46,12 @@ func compareElements() {
 
 	fmt.Printf("\nOur Array before sorting:\n %v\n", array)
 
-	//creating a temporaray variable, TEMP, that'll help us with swapping elements
-	//var temp int
-
 	//now we COMPARE the subsequent elements
 
 	for i := 0; i < len(array)-1; i++ {
 
 		if array[i] < array[i+1] {
 			fmt.Printf("%v is greater than %v\n", array[i+1], array[i])
-			/*temp = array[i]
-			array[i] = array[i+1]
-			array[i+1] = temp*/
 
 		} else {
 			fmt.Printf("%v is lesser than %v\n", array[i+1], array[i])
@@ -63,7 +59,28 @@ func compareElements() {
 		}
 	}
 
-	fmt.Printf("\nOur Sorted Array [DESCENDING ORDER]:\n %v\n", array)
+	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+}
+
+//SWAPPING THE FIRST 2 ELEMENTS OF OUR ARRAY
+
+func swapElements() {
+	array := [10]int{30, 20, 100, 10, 300, 1000, 25, 6, 1, 35}
+
+	fmt.Printf("\nOUR ARRAY BEFORE SWAPPING FIRST 2 ELEMENTS:\n %v\n", array)
+	fmt.Printf("Original Positions of the Elements:\n Index 0: %v \n Index 1: %v \n", array[0], array[1])
+
+	//we'll have to create a temporary variable, TEMP
+	//...TEMP shall help us with swapping 2 elements
+	var temp int
+
+	temp = array[0]
+	array[0] = array[1]
+	array[1] = temp
+
+	fmt.Printf("\nOUR ARRAY AFTER SWAPPING FIRST 2 ELEMENTS:\n %v\n", array)
+	fmt.Printf("NEW Positions of the Elements:\n Index 0: %v \n Index 1: %v \n", array[0], array[1])
+
 	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
@@ -78,6 +95,7 @@ func main() {
 	//MySlice()
 	searchArray()
 	compareElements()
+	swapElements()
 	//sortDescend()
 
 }

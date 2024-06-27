@@ -48,6 +48,36 @@ func (s Students) getSubjects() []map[string]int {
 	return s.subjects
 }
 
+//creating a second struct CLASS that stores the students (type struct data type) ...
+//... as its data elements...
+//the students are stored as elements of
+
+//Class as a storage unit of our data [students] must have a className and item/compartment that stores students
+type Class struct {
+	className string
+	students  []Students
+}
+
+//SETTER METHODS for Class data structure
+
+func (c *Class) setClassName(classNam string) {
+	c.className = classNam
+}
+
+func (c *Class) setStudents(students []Students) {
+	c.students = students
+}
+
+//GETTER METHODS for ACCESSING various data elements in our 'Class data structure'
+
+func (c Class) getClassName() string {
+	return c.className
+}
+
+func (c *Class) getStudents() []Students {
+	return c.students
+}
+
 //Program's Entry Point
 
 func main() {

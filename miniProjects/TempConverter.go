@@ -11,15 +11,15 @@ import "fmt"
 
 //this helps with converting Celsius->Fah
 
-func conCelsius(userTemp, k float64) {
-	finalTemp := userTemp * k
+func conCelsius(userT, k float64) {
+	finalT := userT * k
 
-	fmt.Printf("%v C -> Fah: %v \n", userTemp, finalTemp)
+	fmt.Printf("%v C -> Fah: %v \n", userT, finalT)
 }
 
 //this helps with converting Fah->Celsius
-func conFah(userTemp, k float64) {
-	finalTemp := userTemp / k
+func conFah(userTemp, kon float64) {
+	finalTemp := userTemp / kon
 
 	fmt.Printf("%v Fah -> C: %v \n", userTemp, finalTemp)
 }

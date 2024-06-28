@@ -1,0 +1,31 @@
+#INSERTION ALGORITHM
+
+##Inserting an element (n) at index 3 of the originalArray
+
+I. create a slice of the entire backing Array [originalArray]; call it originalSlice
+    i. originalSlice := arr[:]
+
+II. Slice the originalSlice into two slices; slice1 and slice2
+    i. slice1 should be from index 0 to index 2 ->> 0<sliceElements<3
+    ii. slice1:=make(originalSlice[:3])
+
+    iii. slice2 should be from index 3 to the last index of the originalSlice 3<sliceElements<lastIndex+1
+    iv. slice2:=make(originalSlice[3:])
+III. Now, add your element to be inserted (n) at the end of slice1
+    + slice1=append(slice1, n)
+    + the resulting slice will have 4 elements with n as its last element at index 3 
+
+IV. Then, go ahead and merge the two slices, slice1 and slice2
+    + ensure you're appending slice2 to slice1 tomaintain the order of originalSlice
+    i. slice1=append(slice1, slice2...)
+    ii. now slice1 has all the elements in originalSlice plus n inserted at index 3
+
+V. Copy slice1 to originalSlice
+    + the elements of slice1 shall override every element in originalSlice
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+V. Identify new count of elements in slice1
+    i. create an array with the same name [originalArray] but with different size (size of slice1)
+    ii. copy all the slice1 elements into the new originalArray of same size
+VI. Return new originalArray as to the USER
+
+

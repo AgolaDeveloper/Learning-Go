@@ -50,38 +50,82 @@ import "fmt"
 	fmt.Println("********************************")
 }*/
 
-func insert() {
-	array := [5]int{3, 10, 6, 11, 50}
-	slice := make([]int, len(array)+1)
+//1st METHOD OF INSERTION; BY SHIFTING
+func insert1(array [6]int) {
 
-	//fmt.Println("SLICE: ", slice)
+	fmt.Println("INSERTION BY SHIFTING")
 
-	slice = array[:]
+	//array := [6]int{20, 1200, 4, 56, 9, 100}
 
-	//fmt.Println("SLICE: ", slice)
+	//making a slice that'll copy the original array to...
+	//slice := make([]int, 0)
 
-	//slice := array[:]
+	//coping our array into the slice
+	//slice is dynamic; allows us to shift elements
+
+	slice := array[:]
 	slice = append(slice, 0)
-	//fmt.Println("SLICE: ", slice)
 
 	var element int
-	fmt.Println("What do you wanna Insert at index 2?: ")
+	fmt.Printf("What Element Do You Wanna Insert?\n >>>:  \n")
 	fmt.Scan(&element)
+
+	var index int
+	fmt.Printf("\nAt What Index Do You Wanna Insert Element %v?\n >>>:  \n", element)
+	fmt.Scan(&index)
+
 	//inserting at index 2
-	for i := 4; i > 1; i-- {
+	for i := len(array) - 1; i >= index; i-- {
 		slice[i+1] = slice[i]
 
 	}
-	slice[2] = element
+	slice[index] = element
 
 	fmt.Println("Array BEFORE Insertion: ", array)
 	fmt.Println("Array AFTER Insertion: ", slice)
 
 }
+
+//2nd METHOD OF INSERTION;BY SLICING
+func insert2(arr [6]int) {
+
+	fmt.Println("INSERTION BY SLICING")
+	mySlice := make([]int, 0)
+	//here we just make slice outta the array and slice it further
+	slice := arr[:]
+
+	var n int
+	fmt.Println("At what index do you wanna insert an element?:")
+	fmt.Scan(&n)
+
+	var e int
+	fmt.Println("  element?:")
+	fmt.Scan(&e)
+
+	//slice it into two
+	//first, from 0 to immediately before the index of insertion
+	slice1 := slice[:n]
+	//append it to mySlice
+	mySlice = append(mySlice, slice1...)
+
+	//second one, from index of insertion's element to the last element
+	slice2 := slice[n:]
+
+	//so we'll append to slice1, the element to insert and slice2 respectively
+
+	mySlice = append(mySlice, e)
+	mySlice = append(mySlice, slice2...)
+
+	fmt.Println("Array BEFORE Insertion: ", arr)
+	fmt.Println("Array AFTER Insertion: ", mySlice)
+}
+
 func main() {
-	//	originalArray := [6]int{20, 1200, 4, 56, 9, 100}
+	originalArray := [6]int{20, 1200, 4, 56, 9, 100}
 
 	//Inserting an element in ana Array
 	//arrayInsert()
-	insert()
+	insert1(originalArray)
+
+	insert2(originalArray)
 }

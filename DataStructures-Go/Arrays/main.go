@@ -161,9 +161,9 @@ func delete1(array [6]int) {
 	slice := array[:]
 
 	//create a second slice from which we'll manipulate the elements without reflecting on the backing array
-	mySlice := make([]int, 0)
+	//mySlice := make([]int, 0)
 
-	mySlice = append(mySlice, slice...)
+	//mySlice = append(mySlice, slice...)
 
 	//now slice it into two different slices
 	var index int
@@ -171,7 +171,7 @@ func delete1(array [6]int) {
 	fmt.Scan(&index)
 
 	//first slice upto b4 the index
-	slice1 := mySlice[:index]
+	slice1 := slice[:index]
 
 	//then append to ourSlice
 	ourSlice := make([]int, 0)
@@ -179,12 +179,39 @@ func delete1(array [6]int) {
 	ourSlice = append(ourSlice, slice1...)
 	//again slice another from index+1
 
-	slice2 := mySlice[index+1:]
+	slice2 := slice[index+1:]
 
 	ourSlice = append(ourSlice, slice2...)
 
 	fmt.Printf("\n Before Deletion: %v\n", array)
 	fmt.Printf("\n After Deletion: %v\n", ourSlice)
+
+}
+
+//REVERSING ELEMENTS OF AN ARRAY
+func reverse(array [6]int) {
+	fmt.Println("###########################")
+
+	//:= len(array)-1-1
+	//slice := make([]int, 0)
+
+	//arraySlice := array[:]
+
+	//slice = append(slice, arraySlice...)
+
+	n := len(array) - 1 //5
+
+	for i := n; i >= n-i; i-- {
+
+		for j := n - i; j <= n-i; j++ {
+			temp := array[i]
+			array[i] = array[j]
+			array[j] = temp
+		}
+	}
+
+	fmt.Printf("\n Before REVERSING ELEMENTS: %v\n", array)
+	fmt.Printf("\n After REVERSING ELEMENTS: %v\n", arraySlice)
 
 }
 
@@ -197,5 +224,26 @@ func main() {
 	insert2(originalArray)
 	delete(originalArray)
 	delete1(originalArray)
+
+	for {
+
+		reverse(originalArray)
+
+	choose:
+		fmt.Println("##################################### ")
+
+		var userChoice string
+		fmt.Println("YOU WANNA CONTINUE? (y/n): ")
+		fmt.Scan(&userChoice)
+
+		if userChoice == "y" {
+			continue
+		} else if userChoice == "n" {
+			break
+		} else {
+			fmt.Printf("CONFUSED ELEMENT: INVALID CHOICE...Retry \nIF  ")
+			goto choose
+		}
+	}
 
 }

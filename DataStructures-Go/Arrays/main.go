@@ -120,12 +120,46 @@ func insert2(arr [6]int) {
 	fmt.Println("Array AFTER Insertion: ", mySlice)
 }
 
+//DELETING AN ELEMENT
+// 1. By Shifting
+//adding a function that'll delete an element at a given index in our Array
+func delete(array [6]int) {
+	//we first create a slice of the entire array
+
+	mySlice := array[:]
+	slice := make([]int, 0)
+	slice2 := make([]int, 0, 20)
+
+	//copy mySlice to slice
+	//copy(slice, mySlice)
+	slice = append(slice, mySlice...)
+
+	var index int
+	fmt.Println("At what index do you wanna delete an element?: ")
+	fmt.Scan(&index)
+
+	//Now shift all the elements in our slice to the left
+	//...where we begin with the immediate element to the right of indexed element; replacing it
+
+	for i := index; i < len(slice)-1; i++ {
+		slice[i] = slice[i+1]
+
+		if slice[i] == len(slice)-2 {
+			slice2 = slice[:len(slice)-1]
+		}
+	}
+
+	fmt.Printf("\n Before Deletion: %v\n", array)
+	fmt.Printf("\n After Deletion: %v\n", slice2)
+
+}
+
 func main() {
 	originalArray := [6]int{20, 1200, 4, 56, 9, 100}
 
 	//Inserting an element in ana Array
 	//arrayInsert()
 	insert1(originalArray)
-
 	insert2(originalArray)
+	delete(originalArray)
 }

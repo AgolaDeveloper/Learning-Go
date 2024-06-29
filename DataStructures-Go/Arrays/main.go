@@ -154,6 +154,40 @@ func delete(array [6]int) {
 
 }
 
+//DELETION BY SLICING
+
+func delete1(array [6]int) {
+	//first make slice outta the backing array
+	slice := array[:]
+
+	//create a second slice from which we'll manipulate the elements without reflecting on the backing array
+	mySlice := make([]int, 0)
+
+	mySlice = append(mySlice, slice...)
+
+	//now slice it into two different slices
+	var index int
+	fmt.Println("At what index do you wanna delete an element?: ")
+	fmt.Scan(&index)
+
+	//first slice upto b4 the index
+	slice1 := mySlice[:index]
+
+	//then append to ourSlice
+	ourSlice := make([]int, 0)
+
+	ourSlice = append(ourSlice, slice1...)
+	//again slice another from index+1
+
+	slice2 := mySlice[index+1:]
+
+	ourSlice = append(ourSlice, slice2...)
+
+	fmt.Printf("\n Before Deletion: %v\n", array)
+	fmt.Printf("\n After Deletion: %v\n", ourSlice)
+
+}
+
 func main() {
 	originalArray := [6]int{20, 1200, 4, 56, 9, 100}
 
@@ -162,4 +196,6 @@ func main() {
 	insert1(originalArray)
 	insert2(originalArray)
 	delete(originalArray)
+	delete1(originalArray)
+
 }

@@ -1,5 +1,5 @@
-//This mini project grades the students of a class then goes ahead to rank their performance
-//... one with the highest points/marks tops the class
+//This mini project grades the students of a class then goes ahead to rank their performance.
+//... one with the highest points/marks tops the class.
 
 package main
 
@@ -76,8 +76,17 @@ func (c Class) getClassName() string {
 	return c.className
 }
 
-func (c *Class) getStudents() []Students {
+func (c Class) getStudents() []Students {
 	return c.students
+}
+
+//func for displaying all the students in the class
+
+func (c Class) displayStudents() {
+	fmt.Println("Class-Students: ")
+	for _, value := range c.students {
+		fmt.Println(value)
+	}
 }
 
 //Program's Entry Point
@@ -179,9 +188,8 @@ func main() {
 		//we, just appended [1] object of type Student to Struct Class's slice of struct-objects
 		//... to store it to the struct we need to set it
 
-		class.setStudents(students)
 	}
-	//class.setStudents(students)
+	class.setStudents(students)
 
 	////////////////////////////////////////////////////////////////////////////////
 
@@ -194,12 +202,9 @@ func main() {
 	fmt.Printf("Class-Name: %v \n", classNam)
 
 	//__2. let's access students in this class
-	classStudents := class.getStudents()
+	//classStudents := class.getStudents()
+	class.displayStudents()
 
-	fmt.Println("Class-Students: ")
-	for _, value := range classStudents {
-		fmt.Println(value)
-	}
 	//fmt.Println("Welcome to our SKoolie App")
 
 }

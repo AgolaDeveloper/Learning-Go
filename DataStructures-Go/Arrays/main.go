@@ -189,7 +189,7 @@ func delete1(array [6]int) {
 }*/
 
 //REVERSING ELEMENTS OF AN ARRAY
-func reverse(arr [6]int) {
+func reverse(arr [7]int) {
 	fmt.Println("###########################")
 	//if there's still a copy that you want to remain unmodified in the func
 	//...it's good to copy arr into another new slice or array
@@ -228,14 +228,23 @@ func reverse(arr [6]int) {
 func merge(array1, array2 []int) {
 	//copy array2 into array1
 	//or append array2 to array1
-	array1 = append(array1, array2...)
 
-	fmt.Println(array1)
+	//creating our empty slice/array that'll contain the merged arrays
+	mergedArray := make([]int, 0)
+	mergedArray = append(mergedArray, array1...)
+	mergedArray = append(mergedArray, array2...)
+
+	fmt.Println("THE 2 ARRAYS BEFORE MERGING:")
+
+	fmt.Println("1st ARRAY: ", array1)
+	fmt.Println("2nd ARRAY: ", array2)
+
+	fmt.Println("AFTER MERGIN THE ARRAYS: ", mergedArray)
 
 }
 
 func main() {
-	originalArray := [6]int{20, 1200, 4, 56, 9, 100}
+	originalArray := [7]int{20, 12, 4, 100, 56, 9, 10}
 	originalArray2 := [4]int{222, 333, 444, 555}
 
 	//Inserting an element in ana Array

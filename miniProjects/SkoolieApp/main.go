@@ -97,11 +97,6 @@ func main() {
 
 	//beginning with local variables for Students STRUCT
 
-	var firstName string
-	var lastName string
-	var admissionNumber string
-	subjects := make(map[string]int)
-
 	//...then we move to defining local variables for Class Struct
 	var className string
 	students := make([]Students, 0)
@@ -128,6 +123,7 @@ func main() {
 	class.setClassName(className)
 
 	//before we set/store students, we gotta set values/items of Student, for every student we haave in this class
+
 	var numOfStudents int
 	fmt.Println("How many students do you wanna record their details?")
 	fmt.Scan(&numOfStudents)
@@ -135,19 +131,21 @@ func main() {
 	//now we're going to set details for the n-number of students fed in by the teachers/user above
 
 	for i := 0; i < numOfStudents; i++ {
-		fmt.Printf("You Ready to Record details for STUDENT %v? \n CONTINUE>>\n", (1 + i))
+
+		var firstName string
+		var lastName string
+		var admissionNumber string
+		subjects := make(map[string]int)
+		//	fmt.Printf("You Ready to Record details for STUDENT %v? \n CONTINUE>>\n", (1 + i))
 
 		fmt.Println("Enter Student's First Name: ")
 		fmt.Scan(&firstName)
-		student.setFirstName(firstName)
 
 		fmt.Println("Enter Student's Last Name: ")
 		fmt.Scan(&lastName)
-		student.setLastName(lastName)
 
 		fmt.Println("Enter Student's Admission Number: ")
 		fmt.Scan(&admissionNumber)
-		student.setAdmission(admissionNumber)
 
 		//for every student, you'll have to record subjects and marks scored
 		//teacher/user must map every subject to a respective mark scored by the student
@@ -176,6 +174,11 @@ func main() {
 			//student.setSubjects(subjects)
 		}
 		//then set marks the student has scored to our data struct of Students
+
+		student.setLastName(lastName)
+		student.setAdmission(admissionNumber)
+		student.setFirstName(firstName)
+
 		student.setSubjects(subjects)
 
 		//then we store every instance of Student [as object element]in the Class-slice of object Students of the class
@@ -184,12 +187,12 @@ func main() {
 		//...[every iteration sets an instance/object of Students completely]
 
 		students = append(students, student)
+		class.setStudents(students)
 
 		//we, just appended [1] object of type Student to Struct Class's slice of struct-objects
 		//... to store it to the struct we need to set it
 
 	}
-	class.setStudents(students)
 
 	////////////////////////////////////////////////////////////////////////////////
 

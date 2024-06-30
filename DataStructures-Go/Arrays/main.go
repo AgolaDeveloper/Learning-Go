@@ -51,7 +51,7 @@ import "fmt"
 }*/
 
 //1st METHOD OF INSERTION; BY SHIFTING
-func insert1(array [6]int) {
+/*func insert1(array [6]int) {
 
 	fmt.Println("INSERTION BY SHIFTING")
 
@@ -186,12 +186,19 @@ func delete1(array [6]int) {
 	fmt.Printf("\n Before Deletion: %v\n", array)
 	fmt.Printf("\n After Deletion: %v\n", ourSlice)
 
-}
+}*/
 
 //REVERSING ELEMENTS OF AN ARRAY
-func reverse(array [6]int) {
+func reverse(arr [6]int) {
 	fmt.Println("###########################")
+	//if there's still a copy that you want to remain unmodified in the func
+	//...it's good to copy arr into another new slice or array
 
+	array := arr
+
+	//array := make([]int, 0)
+	//array = append(array, arr...)
+	//array1 := array
 	//:= len(array)-1-1
 	//slice := make([]int, 0)
 
@@ -210,20 +217,36 @@ func reverse(array [6]int) {
 		}
 	}
 
-	fmt.Printf("\n Before REVERSING ELEMENTS: %v\n", array)
-	fmt.Printf("\n After REVERSING ELEMENTS: %v\n", arraySlice)
+	fmt.Printf("\n Before REVERSING ELEMENTS: %v\n", arr)
+	fmt.Printf("\n After REVERSING ELEMENTS: %v\n", array)
+
+}
+
+//MERGING TWO ARRAYS
+//this functions helps with merging 2 arrays
+
+func merge(array1, array2 []int) {
+	//copy array2 into array1
+	//or append array2 to array1
+	array1 = append(array1, array2...)
+
+	fmt.Println(array1)
 
 }
 
 func main() {
 	originalArray := [6]int{20, 1200, 4, 56, 9, 100}
+	originalArray2 := [4]int{222, 333, 444, 555}
 
 	//Inserting an element in ana Array
 	//arrayInsert()
-	insert1(originalArray)
+
+	/*insert1(originalArray)
 	insert2(originalArray)
 	delete(originalArray)
-	delete1(originalArray)
+	delete1(originalArray)*/
+
+	merge(originalArray[:], originalArray2[:])
 
 	for {
 
@@ -245,5 +268,6 @@ func main() {
 			goto choose
 		}
 	}
+	fmt.Println(originalArray)
 
 }

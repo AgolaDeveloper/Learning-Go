@@ -83,10 +83,27 @@ func (c Class) getStudents() []Students {
 //func for displaying all the students in the class
 
 func (c Class) displayStudents() {
-	fmt.Println("Class-Students: ")
+	fmt.Printf("\n%v STUDENTS : \n", c.getClassName())
+
+	fmt.Println("####_________#_________#__________#_________#________#______________####")
+
 	for _, value := range c.students {
-		fmt.Println(value)
+		fmt.Println(value.admissionNumber)
+		fmt.Printf("\n %v %v\n", value.lastName, value.firstName)
+
+		//then range every student's map of subjects while displaying them
+		//loop through the subjects-map of every value/student...
+		fmt.Println("**___________________________________________________________**")
+		for key, value := range value.subjects {
+			//...and print every subject with its respective score
+
+			fmt.Printf("%v: %v\n", key, value)
+		}
+
 	}
+
+	fmt.Println("####_________#_________#__________#_________#________#______________####")
+
 }
 
 //Program's Entry Point
@@ -103,7 +120,6 @@ func main() {
 
 	//creating instances of all our defined Data structs
 	//begin with instance of Students
-	student := Students{}
 
 	//then instance of Class
 	class := Class{}
@@ -131,6 +147,7 @@ func main() {
 	//now we're going to set details for the n-number of students fed in by the teachers/user above
 
 	for i := 0; i < numOfStudents; i++ {
+		student := Students{}
 
 		var firstName string
 		var lastName string

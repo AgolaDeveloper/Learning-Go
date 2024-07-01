@@ -100,27 +100,40 @@ func (c Class) classEmpty() bool {
 //func for displaying all the students in the class
 
 func (c Class) displayStudents() {
-	fmt.Printf("\n%v STUDENTS : \n", c.getClassName())
 
-	fmt.Println("####_________#_________#__________#_________#________#______________####")
+	//we only disply STUDENT(S) Details if the item (slice of objects) storing students'details...
+	//...in Class data struct isn't empty
 
-	for _, value := range c.students {
-		fmt.Println(value.admissionNumber)
-		fmt.Printf("\n %v %v\n", value.lastName, value.firstName)
+	if c.classEmpty() {
+		fmt.Println("Ooops...! No Student Found")
+		fmt.Println("Class Teacher hasn't Recorded any Student Details for the class")
 
-		//then range every student's map of subjects while displaying them
-		//loop through the subjects-map of every value/student...
-		fmt.Println("**___________________________________________________________**")
-		for key, value := range value.subjects {
-			//...and print every subject with its respective score
+	} else {
+		//else, if the class is not empty
+		//display the Student's available
 
-			fmt.Printf("%v: %v\n", key, value)
+		fmt.Printf("\n%v STUDENTS : \n", c.getClassName())
+
+		fmt.Println("####_________#_________#__________#_________#________#______________####")
+
+		for _, value := range c.students {
+			fmt.Println(value.admissionNumber)
+			fmt.Printf("\n %v %v\n", value.lastName, value.firstName)
+
+			//then range every student's map of subjects while displaying them
+			//loop through the subjects-map of every value/student...
+			fmt.Println("**___________________________________________________________**")
+			for key, value := range value.subjects {
+				//...and print every subject with its respective score
+
+				fmt.Printf("%v: %v\n", key, value)
+			}
+
 		}
 
+		fmt.Println("####_________#_________#__________#_________#________#______________####")
+
 	}
-
-	fmt.Println("####_________#_________#__________#_________#________#______________####")
-
 }
 
 //Program's Entry Point

@@ -110,6 +110,10 @@ func (c Class) displayStudents() {
 
 func main() {
 
+	//U/I FEATURES FOR OUR SKOOLIE APP
+	//a welcoming page for users
+	welkam()
+
 	//DEFINING LOCAL VARIABLES FOR OUR composite Data Structure
 
 	//beginning with local variables for Students STRUCT
@@ -226,5 +230,12 @@ func main() {
 	class.displayStudents()
 
 	//fmt.Println("Welcome to our SKoolie App")
+
+}
+
+//defining our welcoming function that welcomes displays a welcoming message upon openning the Application
+func welkam() {
+	fmt.Println("WELCOME TO SKOOLIE APP")
+	fmt.Println("++++++++++++++++++++++++++++++++")
 
 }

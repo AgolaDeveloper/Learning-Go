@@ -34,21 +34,21 @@ func (s *Students) setSubjects(subjects map[string]int) {
 
 //GETTER methods that help with getting/accessing items to every student of instance STUDENTS STRUCT data type
 
-func (s Students) getFirstName() string {
+/*func (s Students) getFirstName() string {
 	return s.firstName
-}
+}*/
 
 func (s Students) getLastName() string {
 	return s.lastName
 }
 
-func (s Students) getAdmission() string {
+/*func (s Students) getAdmission() string {
 	return s.admissionNumber
 }
 
 func (s Students) getSubjects() map[string]int {
 	return s.subjects
-}
+}*/
 
 //creating a second struct CLASS that stores the students (type struct data type) ...
 //... as its data elements...
@@ -62,9 +62,9 @@ type Class struct {
 
 //SETTER METHODS for Class data structure
 
-func (c *Class) setClassName(classNam string) {
+/*func (c *Class) setClassName(classNam string) {
 	c.className = classNam
-}
+}*/
 
 func (c *Class) setStudents(students []Students) {
 	c.students = students
@@ -76,9 +76,9 @@ func (c Class) getClassName() string {
 	return c.className
 }
 
-func (c Class) getStudents() []Students {
+/*func (c Class) getStudents() []Students {
 	return c.students
-}
+}*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //RETRIEVAL METHODS: helping with retrieving INFO about the STUDENTS
@@ -117,16 +117,18 @@ func (c Class) displayStudents() {
 		fmt.Println("####_________#_________#__________#_________#________#______________####")
 
 		for _, value := range c.students {
-			fmt.Println(value.admissionNumber)
+			fmt.Printf("\n\nAdmission Number: %v", value.admissionNumber)
 			fmt.Printf("\n %v %v\n", value.lastName, value.firstName)
 
 			//then range every student's map of subjects while displaying them
 			//loop through the subjects-map of every value/student...
-			fmt.Println("**___________________________________________________________**")
+			fmt.Println("*___________________________________________________________*")
+
 			for key, value := range value.subjects {
 				//...and print every subject with its respective score
 
 				fmt.Printf("%v: %v\n", key, value)
+
 			}
 
 		}
@@ -134,6 +136,40 @@ func (c Class) displayStudents() {
 		fmt.Println("####_________#_________#__________#_________#________#______________####")
 
 	}
+}
+
+//Adding method that RETURNS a map of total marks scored by every student
+//and then store it in a new map
+
+func (c Class) totalMarks() map[string]int {
+
+	totalMrks := make(map[string]int)
+
+	if c.classEmpty() {
+		fmt.Println("Ooops... No Students!")
+	} else {
+		//loop through slice containing Student objects, in the class struct
+
+		for _, value := range c.students {
+			//...then loop through every students map of subjects
+			//... while summing the total marks for every student
+
+			total := 0
+			//count := 0
+			for _, v := range value.subjects {
+				total += v
+
+			}
+			//for every student's total; map it to the student's name
+
+			//concatenating student's last and first names
+			name := value.lastName + " " + value.firstName
+
+			totalMrks[name] = total
+		}
+	}
+
+	return totalMrks
 }
 
 //Program's Entry Point
@@ -145,14 +181,14 @@ func main() {
 	welkam()
 
 	//...then we move to defining local variables for Class Struct
-	var className string
+	//var className string
 	students := make([]Students, 0)
 
 	//creating instances of all our defined Data structs
 	//begin with instance of Students
 
 	//then instance of Class
-	class := Class{}
+	class := Class{className: "Form4_East"}
 
 	for {
 		//IT'S THE USER'S TO CHOOSE WHAT THEY WANT
@@ -180,10 +216,11 @@ func main() {
 			//__ 1. Record Students Details/Grades
 			//__ 2.
 
-			fmt.Printf("Record Students' Details/Grades\n STUDENTS FROM YOUR CLASS ONLY\n")
-			fmt.Println("Enter Class [Name of Your Class]: ")
+			fmt.Printf("Record Students' Details/Grades\n STUDENTS FROM %v ONLY\n", class.className)
+
+			/*fmt.Println("Enter Class [Name of Your Class]: ")
 			fmt.Scan(&className)
-			class.setClassName(className)
+			class.setClassName(className)*/
 
 			//before we set/store students, we gotta set values/items of Student, for every student we haave in this class
 
@@ -261,6 +298,7 @@ func main() {
 
 		case 2:
 			class.displayStudents()
+
 		default:
 			fmt.Println("INVALID CHOICE RETRY...")
 			goto choose
@@ -283,7 +321,7 @@ func main() {
 		case "n":
 			fmt.Println("Ooops...! Sad to See You Leave our Cool SKOOLIE App")
 			fmt.Println("CHEERS")
-			break
+			return
 		default:
 			goto yourChoice
 		}

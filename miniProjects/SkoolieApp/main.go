@@ -173,14 +173,45 @@ func (c Class) totalMarks() map[string]int {
 }
 
 //this methods prints/displays total marks scored for every student in the class
+
 func (c Class) printTotalMarks() {
 	//get value [a map] returned by the Struct's totalMarks() method
 	//... then loop while printing every student's total marks
 
 	//... fmt.Printf("\nSTUDENT NAME %-20v TOTAL MARKS\n")
 	for key, value := range c.totalMarks() {
-		fmt.Printf(" %v : %-20v\n", key, value)
+		fmt.Printf(" %-20v : %v\n", key, value)
 
+	}
+}
+
+//func that returns details of a specific student
+//...given an admission number
+
+func (c Class) studentMarks(admissionNumber string) {
+	//first check if the admission number entered by user exist
+
+	for _, value := range c.students {
+		if value.admissionNumber == admissionNumber {
+			//then print the respective student's details
+			name := value.lastName + " " + value.firstName
+
+			fmt.Printf("\nAdmission Number: %v\n", value.admissionNumber)
+			fmt.Printf("Name: %v\n", name)
+
+			//then range through the subjetc's map and find totalmarks
+			total := 0
+			for key, value := range value.subjects {
+				total += value
+
+				fmt.Printf("%v: %v\n", key, value)
+			}
+
+			fmt.Printf("TOTAL MARKS: %v", total)
+
+		} else {
+			fmt.Printf("\nOoops...! Student with admission %v doesn't Exist\n", admissionNumber)
+		}
 	}
 }
 

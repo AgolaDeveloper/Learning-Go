@@ -185,6 +185,25 @@ func (c Class) printTotalMarks() {
 	}
 }
 
+func (c Class) setGrades(totalMrks int) {
+	//var marks int
+	//first find avaerage (EVERY STUDENT SHOULD SIT FOR 7 papers)
+	agp := totalMrks / 7
+
+	switch agp {
+	case 90 - 100:
+		fmt.Printf("\nAGP (%v): -A\n", agp)
+	case 65 - 89:
+		fmt.Printf("\nAGP (%v): -B\n", agp)
+	case 50 - 64:
+		fmt.Printf("\nAGP (%v): -C\n", agp)
+	case 40 - 49:
+		fmt.Printf("\nAGP (%v): -D\n", agp)
+	default:
+		fmt.Printf("\nAGP (%v): -E\n", agp)
+	}
+}
+
 //func that returns details of a specific student
 //...given an admission number
 
@@ -209,9 +228,13 @@ func (c Class) studentMarks(admissionNumber string) {
 
 			fmt.Printf("TOTAL MARKS: %v", total)
 
-		} else {
-			fmt.Printf("\nOoops...! Student with admission %v doesn't Exist\n", admissionNumber)
+			//then call Struct method that gives grade
+			c.setGrades(total)
+
 		}
+		/*else {
+			fmt.Printf("\nOoops...! Student with admission %v doesn't Exist\n", admissionNumber)
+		}*/
 	}
 }
 
@@ -344,10 +367,12 @@ func main() {
 
 			//once you take the CHOICE to RETRIEVE THE STUDENTS' DETAIL
 			//... YOU AGAIN GOTTA CHOOSE[BE SPECIFIC WITH THE EXACT OPERATION]
+		retryy:
 			var chus int
 			fmt.Println("CHOOSE: ")
 			fmt.Println("1. STUDENT'S DETAILS")
 			fmt.Println("2. STUDENTS' TOTAL MARKS")
+			fmt.Println("3. SPECIFIC STUDENT'S DETAILS")
 
 			fmt.Scan(&chus)
 			switch chus {
@@ -356,6 +381,15 @@ func main() {
 
 			case 2:
 				class.printTotalMarks()
+			case 3:
+				var admNo string
+				fmt.Println("Enter Admission Number")
+				fmt.Scan(&admNo)
+
+				class.studentMarks(admNo)
+			default:
+				fmt.Println("\nINVALID CHOICE\nRetry>>> ")
+				goto retryy
 
 			}
 

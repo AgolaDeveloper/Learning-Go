@@ -133,7 +133,7 @@ func (c Class) displayStudents() {
 
 		}
 
-		fmt.Println("####_________#_________#__________#_________#________#______________####")
+		fmt.Println("####_________#____________________________________#_________####")
 
 	}
 }
@@ -170,6 +170,18 @@ func (c Class) totalMarks() map[string]int {
 	}
 
 	return totalMrks
+}
+
+//this methods prints/displays total marks scored for every student in the class
+func (c Class) printTotalMarks() {
+	//get value [a map] returned by the Struct's totalMarks() method
+	//... then loop while printing every student's total marks
+
+	//... fmt.Printf("\nSTUDENT NAME %-20v TOTAL MARKS\n")
+	for key, value := range c.totalMarks() {
+		fmt.Printf(" %v : %-20v\n", key, value)
+
+	}
 }
 
 //Program's Entry Point
@@ -294,10 +306,27 @@ func main() {
 				//... to store it to the struct we need to set it
 
 			}
-			break
+
+			//break
 
 		case 2:
-			class.displayStudents()
+
+			//once you take the CHOICE to RETRIEVE THE STUDENTS' DETAIL
+			//... YOU AGAIN GOTTA CHOOSE[BE SPECIFIC WITH THE EXACT OPERATION]
+			var chus int
+			fmt.Println("CHOOSE: ")
+			fmt.Println("1. STUDENT'S DETAILS")
+			fmt.Println("2. STUDENTS' TOTAL MARKS")
+
+			fmt.Scan(&chus)
+			switch chus {
+			case 1:
+				class.displayStudents()
+
+			case 2:
+				class.printTotalMarks()
+
+			}
 
 		default:
 			fmt.Println("INVALID CHOICE RETRY...")

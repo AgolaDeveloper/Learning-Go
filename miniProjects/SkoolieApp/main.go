@@ -238,6 +238,99 @@ func (c Class) studentMarks(admissionNumber string) {
 	}
 }
 
+//defining addStudent
+//this function reads and sets Student details
+//...plus, it add the Student object to our Data structure, of Class
+
+func (c Class) addStudent(class Class) {
+	fmt.Println("Welcome to our Skoolie App")
+	//var className string
+	students := make([]Students, 0)
+
+	//user has some options that help in navigating this application's features
+	//__ 1. Record Students Details/Grades
+	//__ 2.
+
+	fmt.Printf("Record Students' Details/Grades\n STUDENTS FROM %v ONLY\n", class.className)
+
+	/*fmt.Println("Enter Class [Name of Your Class]: ")
+	fmt.Scan(&className)
+	class.setClassName(className)*/
+
+	//before we set/store students, we gotta set values/items of Student, for every student we haave in this class
+
+	var numOfStudents int
+	fmt.Println("How many students do you wanna record their details?")
+	fmt.Scan(&numOfStudents)
+
+	//now we're going to set details for the n-number of students fed in by the teachers/user above
+
+	for i := 0; i < numOfStudents; i++ {
+		student := Students{}
+
+		var firstName string
+		var lastName string
+		var admissionNumber string
+		subjects := make(map[string]int)
+		//	fmt.Printf("You Ready to Record details for STUDENT %v? \n CONTINUE>>\n", (1 + i))
+
+		fmt.Println("Enter Student's First Name: ")
+		fmt.Scan(&firstName)
+
+		fmt.Println("Enter Student's Last Name: ")
+		fmt.Scan(&lastName)
+
+		fmt.Println("Enter Student's Admission Number: ")
+		fmt.Scan(&admissionNumber)
+
+		//for every student, you'll have to record subjects and marks scored
+		//teacher/user must map every subject to a respective mark scored by the student
+
+		//but how many subjects Did the students tackle?
+
+		var numOfSubjects int
+
+		fmt.Printf("\nHow Many Subjects for %v's Records/Ranking? \n >>: \n", student.getLastName())
+		fmt.Scan(&numOfSubjects)
+
+		var subject string
+		var marks int
+
+		for i := 0; i < numOfSubjects; i++ {
+			fmt.Printf("Enter %v's Subject-%v: ", student.lastName, i+1)
+			fmt.Scan(&subject)
+
+			fmt.Printf("Enter %v's Mark-Score: ", subject)
+			fmt.Scan(&marks)
+
+			//every iteration...recording of a subject and respective mark-Score must be mapped
+			subjects[subject] = marks
+
+			//once it's mapped we need to set IT TO THE struct Student's subject item
+			//student.setSubjects(subjects)
+		}
+		//then set marks the student has scored to our data struct of Students
+
+		student.setLastName(lastName)
+		student.setAdmission(admissionNumber)
+		student.setFirstName(firstName)
+
+		student.setSubjects(subjects)
+
+		//then we store every instance of Student [as object element]in the Class-slice of object Students of the class
+
+		//thus we'll append OBJECT STUDENT to the Class's local slice of Students in every iteration
+		//...[every iteration sets an instance/object of Students completely]
+
+		students = append(students, student)
+		class.setStudents(students)
+
+		//we, just appended [1] object of type Student to Struct Class's slice of struct-objects
+		//... to store it to the struct we need to set it
+
+	}
+}
+
 //Program's Entry Point
 
 func main() {
@@ -247,8 +340,6 @@ func main() {
 	welkam()
 
 	//...then we move to defining local variables for Class Struct
-	//var className string
-	students := make([]Students, 0)
 
 	//creating instances of all our defined Data structs
 	//begin with instance of Students
@@ -277,91 +368,8 @@ func main() {
 			//it should have its name
 			//...and a slice of Student objects, as its data elements
 
-			fmt.Println("Welcome to our Skoolie App")
-			//user has some options that help in navigating this application's features
-			//__ 1. Record Students Details/Grades
-			//__ 2.
-
-			fmt.Printf("Record Students' Details/Grades\n STUDENTS FROM %v ONLY\n", class.className)
-
-			/*fmt.Println("Enter Class [Name of Your Class]: ")
-			fmt.Scan(&className)
-			class.setClassName(className)*/
-
-			//before we set/store students, we gotta set values/items of Student, for every student we haave in this class
-
-			var numOfStudents int
-			fmt.Println("How many students do you wanna record their details?")
-			fmt.Scan(&numOfStudents)
-
-			//now we're going to set details for the n-number of students fed in by the teachers/user above
-
-			for i := 0; i < numOfStudents; i++ {
-				student := Students{}
-
-				var firstName string
-				var lastName string
-				var admissionNumber string
-				subjects := make(map[string]int)
-				//	fmt.Printf("You Ready to Record details for STUDENT %v? \n CONTINUE>>\n", (1 + i))
-
-				fmt.Println("Enter Student's First Name: ")
-				fmt.Scan(&firstName)
-
-				fmt.Println("Enter Student's Last Name: ")
-				fmt.Scan(&lastName)
-
-				fmt.Println("Enter Student's Admission Number: ")
-				fmt.Scan(&admissionNumber)
-
-				//for every student, you'll have to record subjects and marks scored
-				//teacher/user must map every subject to a respective mark scored by the student
-
-				//but how many subjects Did the students tackle?
-
-				var numOfSubjects int
-
-				fmt.Printf("\nHow Many Subjects for %v's Records/Ranking? \n >>: \n", student.getLastName())
-				fmt.Scan(&numOfSubjects)
-
-				var subject string
-				var marks int
-
-				for i := 0; i < numOfSubjects; i++ {
-					fmt.Printf("Enter %v's Subject-%v: ", student.lastName, i+1)
-					fmt.Scan(&subject)
-
-					fmt.Printf("Enter %v's Mark-Score: ", subject)
-					fmt.Scan(&marks)
-
-					//every iteration...recording of a subject and respective mark-Score must be mapped
-					subjects[subject] = marks
-
-					//once it's mapped we need to set IT TO THE struct Student's subject item
-					//student.setSubjects(subjects)
-				}
-				//then set marks the student has scored to our data struct of Students
-
-				student.setLastName(lastName)
-				student.setAdmission(admissionNumber)
-				student.setFirstName(firstName)
-
-				student.setSubjects(subjects)
-
-				//then we store every instance of Student [as object element]in the Class-slice of object Students of the class
-
-				//thus we'll append OBJECT STUDENT to the Class's local slice of Students in every iteration
-				//...[every iteration sets an instance/object of Students completely]
-
-				students = append(students, student)
-				class.setStudents(students)
-
-				//we, just appended [1] object of type Student to Struct Class's slice of struct-objects
-				//... to store it to the struct we need to set it
-
-			}
-
 			//break
+			class.addStudent(class)
 
 		case 2:
 

@@ -35,5 +35,10 @@ func main() {
 	fmt.Scan(&data)
 
 	node.setData(data)
+
+	//second node
+	fmt.Println("Enter data for node 2: ")
+	fmt.Scan(&data)
+
 	node.setNextNode(nil)
 }

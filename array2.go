@@ -3,7 +3,7 @@ package main
 
 import "fmt"
 
-func advancingArray() {
+func advanceArray() {
 	//trying to do a SEARCH OPERATION on our array
 
 	ourArray := [10]int{}

@@ -1,5 +1,6 @@
-// this program file adds items to the map
 package main
+
+// this program file adds items to the map
 
 import "fmt"
 

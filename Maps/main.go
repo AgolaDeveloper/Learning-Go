@@ -7,5 +7,9 @@ func main() {
 	ourStruct := ourMap()
 
 	//add item
+	addItem(ourStruct, IsMapEmpty)
+
+	//delete an item
+	deleteItem(ourStruct, IsMapEmpty)
 
 }

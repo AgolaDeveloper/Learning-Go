@@ -4,12 +4,12 @@ package main
 
 func main() {
 	//first initialize ourMap into a local map variable
-	ourStruct := ourMap()
+	ourStruct := OurMap()
 
 	//add item
-	addItem(ourStruct, IsMapEmpty)
+	AddItem(ourStruct, IsMapEmpty)
 
 	//delete an item
-	deleteItem(ourStruct, IsMapEmpty)
+	DeleteItem(ourStruct, IsMapEmpty)
 
 }
